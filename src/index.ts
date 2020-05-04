@@ -1,9 +1,10 @@
 import app from "./app";
-const PORT = process.env.PORT || 3000;
+import {Request, Response} from "express";
+import {PORT} from "./constants/constants";
 
 // define a route handler for the default home page
-app.get("/", (req: any, res: any) => {
-    res.send("Hello world!");
+app.get("/", (req: Request, res: Response) => {
+    res.sendfile("./public/index.html");
 });
 
 // start the Express server
