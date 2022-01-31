@@ -36,7 +36,9 @@ export class DbClient {
     }
 
     private async connect() {
-        const client: MongoClient = await MongoClient.connect(mongoDBConnectionString, {
+        // Need to be "any" because of types error TS2769
+        const client: any = await MongoClient.connect(mongoDBConnectionString, {
+            // @ts-ignore TS2769
             useUnifiedTopology: true,
         });
         this.db = client.db(DBName);
